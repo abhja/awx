@@ -1,0 +1,4 @@
+- name: install_npm
+  package:
+    name: "*"
+    state: latest

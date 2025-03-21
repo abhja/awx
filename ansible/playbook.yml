@@ -1,0 +1,12 @@
+- hosts: servers
+  become: yes
+  roles:
+    - update_apt_cache
+    - update_system_packages
+    - install_essential_packages
+    - install_rails
+    - install_java
+    - install_npm
+    - install_pm2
+    - docker
+    

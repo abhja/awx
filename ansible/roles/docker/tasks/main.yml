@@ -1,0 +1,35 @@
+- name: Install or Remove Docker
+  package:
+    name: "{{ docker_package }}"
+    state: "{{ docker_state }}"
+
+- name: Start and enable Docker service when installed
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  when: docker_state == "present"
+
+- name: Stop Docker service when removing
+  service:
+    name: docker
+    state: stopped
+  when: docker_state == "absent"
+
+- name: Remove Docker directories when uninstalling
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /var/lib/docker
+    - /etc/docker
+    - /var/run/docker.sock
+  when: docker_state == "absent"
+
+- name: Ensure Docker service is restarted
+  systemd:
+    name: docker
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+

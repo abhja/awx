@@ -1,0 +1,6 @@
+java_package: "{{ 'openjdk-11-jdk' if ansible_pkg_mgr == 'apt' else 'java-11-openjdk-devel' }}"
+npm_package: "{{ 'npm' if ansible_pkg_mgr == 'apt' else 'nodejs' }}"
+docker_package: "{{ 'docker.io' if ansible_pkg_mgr == 'apt' else 'docker' }}"
+docker_state: "present"  # Change to "absent" to uninstall Docker
+
+

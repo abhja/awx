@@ -1,0 +1,4 @@
+- name: install_pm2
+  package:
+    name: "*"
+    state: latest

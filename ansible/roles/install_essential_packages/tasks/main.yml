@@ -1,0 +1,4 @@
+- name: install_essential_packages
+  package:
+    name: "*"
+    state: latest
