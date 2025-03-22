@@ -9,4 +9,3 @@
     - install_npm
     - install_pm2
     - docker
-    
